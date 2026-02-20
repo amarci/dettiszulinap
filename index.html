@@ -14,12 +14,45 @@
             margin: 0;
             overflow: hidden;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
         h1 {
             color: #d63384;
             font-size: 50px;
-            text-align: center;
+            z-index: 2;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+            z-index: 2;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #ff66a3;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #ff3385;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #444;
             z-index: 2;
         }
 
@@ -28,7 +61,6 @@
             bottom: -150px;
             width: 60px;
             height: 80px;
-            background-color: red;
             border-radius: 50%;
             animation: float 8s infinite ease-in;
         }
@@ -44,19 +76,15 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-110vh);
-            }
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-110vh); }
         }
 
-        .balloon:nth-child(1) { left: 10%; background: #ff4d4d; animation-duration: 7s; }
-        .balloon:nth-child(2) { left: 30%; background: #4da6ff; animation-duration: 9s; }
-        .balloon:nth-child(3) { left: 50%; background: #ffd11a; animation-duration: 8s; }
-        .balloon:nth-child(4) { left: 70%; background: #66ff66; animation-duration: 10s; }
-        .balloon:nth-child(5) { left: 85%; background: #cc66ff; animation-duration: 6s; }
+        .b1 { left: 10%; background: #ff4d4d; animation-duration: 7s; }
+        .b2 { left: 30%; background: #4da6ff; animation-duration: 9s; }
+        .b3 { left: 50%; background: #ffd11a; animation-duration: 8s; }
+        .b4 { left: 70%; background: #66ff66; animation-duration: 10s; }
+        .b5 { left: 85%; background: #cc66ff; animation-duration: 6s; }
 
         iframe {
             position: absolute;
@@ -71,17 +99,38 @@
 
     <h1>🎉 Boldog szülinapot Detti! 🎉</h1>
 
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
+    <h2>Ennél valamit?</h2>
 
-    <!-- 90s music: Backstreet Boys - Everybody -->
+    <div class="buttons">
+        <button onclick="cookOption()">Főzök valamit</button>
+        <button onclick="restaurantOption()">Étterembe mennék</button>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+    <div class="balloon b4"></div>
+    <div class="balloon b5"></div>
+
+    <!-- 90s music -->
     <iframe 
         src="https://www.youtube.com/embed/6M6samPEMpM?autoplay=1&loop=1&playlist=6M6samPEMpM"
         allow="autoplay">
     </iframe>
+
+    <script>
+        function cookOption() {
+            document.getElementById("result").innerText = 
+                "Fogd a banyatankot és irány a piac!";
+        }
+
+        function restaurantOption() {
+            alert("Az ajándékodat keresd a banyatankban!");
+            window.location.href = "https://virturestaurant.com/en/reservation?gad_source=1&gad_campaignid=21394275839&gbraid=0AAAAAqnyv_wm0kJDCBuQ9HWLrkxy5ph7m&gclid=Cj0KCQiAqeDMBhDcARIsAJEbU9ReefFpAmDnnhvWOOCBZkhRORJWCf7EucEzV1E1czUPTepnLhTuGkMaAgr7EALw_wcB";
+        }
+    </script>
 
 </body>
 </html>
